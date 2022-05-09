@@ -1,0 +1,76 @@
+{
+	// See https://go.microsoft.com/fwlink/?LinkId=733558
+	// for the documentation about the tasks.json format
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "echo",
+			"type": "shell",
+			"command": "echo Hello"
+		},
+		{
+			"label": "build",
+			"type": "shell",
+			"command": "ninja",
+			"options": {
+				"cwd": "${workspaceFolder}/build"
+			},
+			"dependsOn": [
+				"cmake"
+			]
+		},
+		{
+			"label": "clean",
+			"type": "shell",
+			"command": "rm -rf build",
+			"problemMatcher": []
+		},
+		{
+			"label": "cmake",
+			"type": "shell",
+			"command": "cmake .. -G Ninja -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++",
+			"options": {
+				"cwd": "${workspaceFolder}/build"
+			},
+			"dependsOn": [
+				"makeBuildPath"
+			],
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": true,
+				"clear": true
+			}
+		},
+		{
+			"label": "makeBuildPath",
+			"type": "shell",
+			"command": "mkdir -p build"
+		},
+		{
+			"label": "build_app",
+			"type": "shell",
+			"command": "cmake --build . --target app",
+			"options": {
+				"cwd": "${workspaceFolder}/build"
+			},
+			"dependsOn": [
+				"cmake"
+			]
+		},
+		{
+			"label": "build_app2",
+			"type": "shell",
+			"command": "cmake --build . --target app2",
+			"options": {
+				"cwd": "${workspaceFolder}/build"
+			},
+			"dependsOn": [
+				"cmake"
+			],
+			"problemMatcher": []
+		}
+	]
+}

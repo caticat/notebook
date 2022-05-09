@@ -1,0 +1,36 @@
+{
+	// Use IntelliSense to learn about possible attributes.
+	// Hover to view descriptions of existing attributes.
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "app",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "${workspaceRoot}/build/app/app",
+			"cwd": "${workspaceFolder}/build/app",
+			"setupCommands": [
+				{
+					"description": "gdb整齐打印(map等内容可以正常显示)",
+					"text": "-enable-pretty-printing",
+					"ignoreFailures": true
+				}
+			]
+		},
+		{
+			"name": "app2",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "${workspaceRoot}/build/app2/app2",
+			"cwd": "${workspaceFolder}/build/app2",
+			"setupCommands": [
+				{
+					"description": "gdb整齐打印(map等内容可以正常显示)",
+					"text": "-enable-pretty-printing",
+					"ignoreFailures": true
+				}
+			]
+		}
+	]
+}

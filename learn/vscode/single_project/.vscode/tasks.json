@@ -1,0 +1,46 @@
+{
+	// See https://go.microsoft.com/fwlink/?LinkId=733558
+	// for the documentation about the tasks.json format
+	"version": "2.0.0",
+	"tasks": [
+		{
+			// 测试
+			"label": "echo",
+			"type": "shell",
+			"command": "echo Hello"
+		},
+		{
+			// 编译
+			"label": "build",
+			"type": "shell",
+			"command": "cmake .. -G Ninja -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ && ninja",
+			"options": {
+				"cwd": "${workspaceFolder}/build"
+			},
+			"dependsOn": [
+				"makeBuildPath"
+			],
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": true,
+				"clear": true
+			}
+		},
+		{
+			// 清理
+			"label": "clean",
+			"type": "shell",
+			"command": "rm -rf build",
+			"problemMatcher": []
+		},
+		{
+			// 前置目录创建
+			"label": "makeBuildPath",
+			"type": "shell",
+			"command": "mkdir -p build"
+		}
+	]
+}
