@@ -1,0 +1,110 @@
+{
+	// Use IntelliSense to learn about possible attributes.
+	// Hover to view descriptions of existing attributes.
+	// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "game",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "/home/pan/workspace/runtime/bin/game/game",
+			"cwd": "/home/pan/workspace/runtime/bin/game",
+			"args": [
+				"serverFlag=0",
+				"stopGM=0",
+				"stopGM=0",
+				"stopChangeTime=1",
+				"stopCharge=0",
+				"--config=../../etc/game/game.json"
+			],
+			"setupCommands": [
+				{
+					"description": "gdb整齐打印(map等内容可以正常显示)",
+					"text": "-enable-pretty-printing",
+					"ignoreFailures": true
+				}
+			]
+		},
+		{
+			"name": "cross",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "/home/pan/workspace/runtime/bin/game/cross",
+			"cwd": "/home/pan/workspace/runtime/bin/game",
+			"args": [
+				"serverFlag=1",
+				"stopGM=0",
+				"stopGM=0",
+				"stopChangeTime=1",
+				"stopCharge=0",
+				"--config=../../etc/cross/kuafu.json"
+			],
+			"setupCommands": [
+				{
+					"description": "gdb整齐打印(map等内容可以正常显示)",
+					"text": "-enable-pretty-printing",
+					"ignoreFailures": true
+				}
+			]
+		},
+		{
+			"name": "union",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "/home/pan/workspace/runtime/bin/game/union",
+			"cwd": "/home/pan/workspace/runtime/bin/game",
+			"args": [
+				"serverFlag=2",
+				"stopGM=0",
+				"stopGM=0",
+				"stopChangeTime=1",
+				"stopCharge=0",
+				"--config=../../etc/union/tongfu.json"
+			],
+			"setupCommands": [
+				{
+					"description": "gdb整齐打印(map等内容可以正常显示)",
+					"text": "-enable-pretty-printing",
+					"ignoreFailures": true
+				}
+			]
+		},
+		{
+			"name": "gate",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "/home/pan/workspace/runtime/bin/gate/gate",
+			"cwd": "/home/pan/workspace/runtime/bin/gate",
+			"args": [
+				"StopSDKLogin=1",
+				"GenaratePassWord=0",
+				"--config=../../etc/gate/gateserver.json"
+			],
+			"setupCommands": [
+				{
+					"description": "gdb整齐打印(map等内容可以正常显示)",
+					"text": "-enable-pretty-printing",
+					"ignoreFailures": true
+				}
+			]
+		},
+		{
+			"name": "world",
+			"type": "cppdbg",
+			"request": "launch",
+			"program": "/home/pan/workspace/runtime/bin/world/world",
+			"cwd": "/home/pan/workspace/runtime/bin/world",
+			"args": [
+				"--config=../../etc/world/worldserver.json"
+			],
+			"setupCommands": [
+				{
+					"description": "gdb整齐打印(map等内容可以正常显示)",
+					"text": "-enable-pretty-printing",
+					"ignoreFailures": true
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,89 @@
+{
+	// See https://go.microsoft.com/fwlink/?LinkId=733558
+	// for the documentation about the tasks.json format
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "echo",
+			"type": "shell",
+			"command": "echo Hello"
+		},
+		{
+			"label": "build",
+			"type": "shell",
+			"command": "ninja",
+			"options": {
+				"cwd": "${workspaceFolder}/cmake-build-debug"
+			},
+			"dependsOn": [
+				"cmake"
+			]
+		},
+		{
+			"label": "clean",
+			"type": "shell",
+			"command": "rm -rf cmake-build-debug",
+			"problemMatcher": []
+		},
+		{
+			"label": "cmake",
+			"type": "shell",
+			"command": "cmake .. -G Ninja -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++",
+			"options": {
+				"cwd": "${workspaceFolder}/cmake-build-debug"
+			},
+			"dependsOn": [
+				"makeBuildPath"
+			],
+			"presentation": {
+				"echo": true,
+				"reveal": "always",
+				"focus": false,
+				"panel": "shared",
+				"showReuseMessage": true,
+				"clear": true
+			}
+		},
+		{
+			"label": "makeBuildPath",
+			"type": "shell",
+			"command": "mkdir -p cmake-build-debug"
+		},
+		{
+			"label": "build_gate",
+			"type": "shell",
+			"command": "cmake --build . --target gate.out",
+			"options": {
+				"cwd": "${workspaceFolder}/cmake-build-debug"
+			},
+			"dependsOn": [
+				"cmake"
+			],
+			"problemMatcher": []
+		},
+		{
+			"label": "build_world",
+			"type": "shell",
+			"command": "cmake --build . --target world.out",
+			"options": {
+				"cwd": "${workspaceFolder}/cmake-build-debug"
+			},
+			"dependsOn": [
+				"cmake"
+			],
+			"problemMatcher": []
+		},
+		{
+			"label": "build_game",
+			"type": "shell",
+			"command": "cmake --build . --target game.out",
+			"options": {
+				"cwd": "${workspaceFolder}/cmake-build-debug"
+			},
+			"dependsOn": [
+				"cmake"
+			],
+			"problemMatcher": []
+		}
+	]
+}
