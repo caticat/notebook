@@ -13,27 +13,28 @@
 			"type": "shell",
 			"command": "ninja",
 			"options": {
-				"cwd": "${workspaceFolder}/cmake-build-debug"
+				"cwd": "${workspaceFolder}/build"
 			},
 			"dependsOn": [
-				"cmake"
+				"_cmake"
 			]
 		},
 		{
 			"label": "clean",
 			"type": "shell",
-			"command": "rm -rf cmake-build-debug",
+			"command": "rm -rf build",
 			"problemMatcher": []
 		},
 		{
-			"label": "cmake",
+			"label": "_cmake",
 			"type": "shell",
 			"command": "cmake .. -G Ninja -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++",
 			"options": {
-				"cwd": "${workspaceFolder}/cmake-build-debug"
+				"cwd": "${workspaceFolder}/build"
 			},
 			"dependsOn": [
-				"makeBuildPath"
+				"_makeBuildPath",
+				"_restoreCmake"
 			],
 			"presentation": {
 				"echo": true,
@@ -45,43 +46,49 @@
 			}
 		},
 		{
-			"label": "makeBuildPath",
+			"label": "_makeBuildPath",
 			"type": "shell",
-			"command": "mkdir -p cmake-build-debug"
+			"command": "mkdir -p build"
 		},
 		{
-			"label": "build_gate",
+			"label": "_restoreCmake",
+			"type": "shell",
+			"command": "/home/pan/.bin/pan.sh mc",
+			"problemMatcher": []
+		},
+		{
+			"label": "buildGate",
 			"type": "shell",
 			"command": "cmake --build . --target gate.out",
 			"options": {
-				"cwd": "${workspaceFolder}/cmake-build-debug"
+				"cwd": "${workspaceFolder}/build"
 			},
 			"dependsOn": [
-				"cmake"
+				"_cmake"
 			],
 			"problemMatcher": []
 		},
 		{
-			"label": "build_world",
+			"label": "buildWorld",
 			"type": "shell",
 			"command": "cmake --build . --target world.out",
 			"options": {
-				"cwd": "${workspaceFolder}/cmake-build-debug"
+				"cwd": "${workspaceFolder}/build"
 			},
 			"dependsOn": [
-				"cmake"
+				"_cmake"
 			],
 			"problemMatcher": []
 		},
 		{
-			"label": "build_game",
+			"label": "buildGame",
 			"type": "shell",
-			"command": "cmake --build . --target game.out",
+			"command": "cmake --build . --target phoenix.out",
 			"options": {
-				"cwd": "${workspaceFolder}/cmake-build-debug"
+				"cwd": "${workspaceFolder}/build"
 			},
 			"dependsOn": [
-				"cmake"
+				"_cmake"
 			],
 			"problemMatcher": []
 		}

@@ -13,7 +13,7 @@
 			"args": [
 				"serverFlag=0",
 				"stopGM=0",
-				"stopGM=0",
+				"freem=1",
 				"stopChangeTime=1",
 				"stopCharge=0",
 				"--config=../../etc/game/game.json"
@@ -35,7 +35,7 @@
 			"args": [
 				"serverFlag=1",
 				"stopGM=0",
-				"stopGM=0",
+				"freem=1",
 				"stopChangeTime=1",
 				"stopCharge=0",
 				"--config=../../etc/cross/kuafu.json"
@@ -57,7 +57,7 @@
 			"args": [
 				"serverFlag=2",
 				"stopGM=0",
-				"stopGM=0",
+				"freem=1",
 				"stopChangeTime=1",
 				"stopCharge=0",
 				"--config=../../etc/union/tongfu.json"

@@ -35,3 +35,10 @@ target_link_libraries(${PROJECT_NAME}
 # target_compile_options(${PROJECT_NAME}
 #         PRIVATE -fsanitize=address -fno-omit-frame-pointer
 #         )
+
+# 结束后执行脚本
+add_custom_command(
+        TARGET ${PROJECT_NAME}
+        POST_BUILD
+        COMMAND /home/pan/.bin/pan.sh ub GateServer/${PROJECT_NAME}
+)
