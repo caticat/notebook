@@ -11,13 +11,15 @@
 		{
 			"label": "build",
 			"type": "shell",
-			"command": "ninja",
+			"command": "cmake --build . --target game.out",
 			"options": {
 				"cwd": "${workspaceFolder}/build"
 			},
 			"dependsOn": [
-				"_cmake"
-			]
+				"_cmake",
+				"syncLua"
+			],
+			"problemMatcher": []
 		},
 		{
 			"label": "clean",
@@ -41,14 +43,17 @@
 				"reveal": "always",
 				"focus": false,
 				"panel": "shared",
-				"showReuseMessage": true,
+				"showReuseMessage": false,
 				"clear": true
 			}
 		},
 		{
 			"label": "_makeBuildPath",
 			"type": "shell",
-			"command": "mkdir -p build"
+			"command": "mkdir -p build",
+			"presentation": {
+				"close": true
+			}
 		},
 		{
 			"label": "_restoreCmake",
@@ -81,15 +86,20 @@
 			"problemMatcher": []
 		},
 		{
-			"label": "buildGame",
+			"label": "buildAll",
 			"type": "shell",
-			"command": "cmake --build . --target phoenix.out",
+			"command": "ninja",
 			"options": {
 				"cwd": "${workspaceFolder}/build"
 			},
 			"dependsOn": [
 				"_cmake"
-			],
+			]
+		},
+		{
+			"label": "syncLua",
+			"type": "shell",
+			"command": "rsync -azqP ${workspaceFolder}/Game/lua /home/pan/workspace/runtime/bin/game",
 			"problemMatcher": []
 		}
 	]
